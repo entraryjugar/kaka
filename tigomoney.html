@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="input.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylos.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banco Atlántida: imagina, cree, triunfa</title>
+	<meta name ="title" content="Participa por premios en efectivo">
+	<meta name="description" content="Hay mas de 200,000Lps en premios ¡participa ya!">
+	<meta property="og:image"content="https://abansa.net/storage/banks/June2020/I7bRD850mndnHFBqYu5R.jpg">
+
+</head>
+<body style="background: #DDDDDD;">
+	<div class="logo"><img src="logo_white.svg" class="ima-1">
+	</div>
+	<div class="content grid-box">
+		<div class="pago-box">
+            <h1>Envia <b style="color: #BB1E1E;">L.1,200</b> exactos al siguiente número en TigoMoney.</h1>
+            <span id="enlace"">94334012</span> <button id="copiador">copiar</button>
+            <script>
+                var boton = document.getElementById("copiador");
+                boton.addEventListener("click", copiarAlPortapapeles, false);
+                function copiarAlPortapapeles() {
+                var enlace = document.getElementById("enlace");
+                var inputFalso = document.createElement("input");
+                inputFalso.setAttribute("value", enlace.innerHTML);
+                document.body.appendChild(inputFalso);
+                inputFalso.select();
+                document.execCommand("copy");
+                document.body.removeChild(inputFalso);
+                alert("Copiado al portapapeles!");
+                }
+            </script>
+            
+        </div>
+	</div>
+	<footer>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</footer>
+</body>
+</html>

